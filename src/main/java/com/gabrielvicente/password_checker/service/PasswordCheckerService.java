@@ -15,6 +15,7 @@ public class PasswordCheckerService {
         hasAtLeastOneCapitalLetter(password, errors);
         hasAtLeastOneLowerCaseLetter(password, errors);
         hasAtLeasOneNumber(password, errors);
+        hasAtLeastOneSpecialCharacter(password, errors);
 
         return errors;
     }
@@ -40,6 +41,12 @@ public class PasswordCheckerService {
     private void hasAtLeasOneNumber(String password, List<String> errors) {
         if (password != null && !password.matches(".*[0-9].*")) {
             errors.add("Password must contain at least one number");
+        }
+    }
+
+    private void hasAtLeastOneSpecialCharacter(String password, List<String> errors) {
+        if (password != null && !password.matches(".*[\\W].*")) {
+            errors.add("Password must contain at least one special character (!@#$%)");
         }
     }
 }
