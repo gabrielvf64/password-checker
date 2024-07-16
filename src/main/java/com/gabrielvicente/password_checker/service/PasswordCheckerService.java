@@ -13,6 +13,7 @@ public class PasswordCheckerService {
 
         hasAtLeastEightCharactersLong(password, errors);
         hasAtLeastOneCapitalLetter(password, errors);
+        hasAtLeastOneLowerCaseLetter(password, errors);
 
         return errors;
     }
@@ -26,6 +27,12 @@ public class PasswordCheckerService {
     private void hasAtLeastOneCapitalLetter(String password, List<String> errors) {
         if (password != null && !password.matches(".*[A-Z].*")) {
             errors.add("Password must contain at least one capital letter");
+        }
+    }
+
+    private void hasAtLeastOneLowerCaseLetter(String password, List<String> errors) {
+        if (password != null && !password.matches(".*[a-z].*")) {
+            errors.add("Password must contain at least one lower case letter");
         }
     }
 }
